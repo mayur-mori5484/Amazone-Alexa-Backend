@@ -162,20 +162,69 @@ function verifyToken(req, res, next) {
 app.post("/integrations/alexa/directives", (req, res) => {
     console.log("📩 Alexa Directive:", JSON.stringify(req.body, null, 2));
 
-    res.json({
-        event: {
-            header: {
-                namespace: "Alexa",
-                name: "Response",
-                messageId: uuidv4(),
-                payloadVersion: "3"
-            },
-            endpoint: {
-                endpointId: "device001"
-            },
-            payload: {}
-        }
-    });
+    const directive = req.body.directive;
+    const namespace = directive.header.namespace;
+    const name = directive.header.name;
+
+    // -----------------------------
+    // 🔍 DISCOVERY (REQUIRED)
+    // -----------------------------
+    if (namespace === "Alexa.Discovery" && name === "Discover") {
+        return res.json({
+            event: {
+                header: {
+                    namespace: "Alexa.Discovery",
+                    name: "Discover.Response",
+                    payloadVersion: "3",
+                    messageId: uuidv4()
+                },
+                payload: {
+                    endpoints: [
+                        {
+                            endpointId: "device001",
+                            manufacturerName: "SheGuard",
+                            friendlyName: "Test Light",
+                            description: "Smart Light",
+                            displayCategories: ["LIGHT"],
+                            capabilities: [
+                                {
+                                    type: "AlexaInterface",
+                                    interface: "Alexa.PowerController",
+                                    version: "3",
+                                    properties: {
+                                        supported: [{ name: "powerState" }],
+                                        retrievable: true
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        });
+    }
+
+    // -----------------------------
+    // ⚡ POWER CONTROL
+    // -----------------------------
+    if (namespace === "Alexa.PowerController") {
+        return res.json({
+            event: {
+                header: {
+                    namespace: "Alexa",
+                    name: "Response",
+                    payloadVersion: "3",
+                    messageId: uuidv4()
+                },
+                endpoint: {
+                    endpointId: directive.endpoint.endpointId
+                },
+                payload: {}
+            }
+        });
+    }
+
+    return res.status(400).send("Unsupported directive");
 });
 
 // -----------------------------
