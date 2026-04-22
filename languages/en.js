@@ -1,0 +1,55 @@
+const en = {
+
+    accepted: 'The :attribute must be accepted',
+    email: 'Please enter a valid email address.',
+    exists: 'The selected :attribute is invalid',
+    in: 'The selected :attribute is invalid',
+    integer: 'The :attribute must be an integer',
+    required: 'The :attribute field is required',
+    required_if: 'The :attribute field is required when :other is :value',
+    required_unless: 'The :attribute field is required unless :other is in :values',
+    date_format: "The :attribute must match the format :date_format.",
+
+
+    invalid_or_expired_token: 'Your session token is either invalid or has expired. Please log in again to continue.',
+    rest_keywords_token_not_found: 'Please provide token',
+    device_token_not_found_or_mismatch: 'Device token is missing or does not match. Please try again.',
+    rest_keywords_invalid_token: 'Invalid Token',
+    rest_keywords_currency_not_found: 'Please provide currency code',
+    rest_keywords_token_expired: 'Token is expired.',
+    rest_keywords_invalid_api_key: 'Invalid API key',
+    rest_keywords_apikey_not_found: 'Please provide API key',
+    rest_keywords_something_went_wrong: 'Something went wrong, please try again later.',
+    rest_keywords_duplicate_email: 'There is already an account registered with this email address',
+    rest_keywords_duplicate_phonenumber: 'There is already an account registered with this phone number',
+    rest_keywords_device_info_error: "Device information error.",
+    rest_keywords_user_add_success: 'registration successfully.',
+    rest_keywords_user_not_created: 'User not created',
+    rest_keywords_invalid_email: 'Please enter correct email',
+    rest_keywords_user_inactive: 'Your account has been deactivated so please contact to admin',
+    rest_keywords_password_notvalid_message: 'Please enter correct password',
+    rest_keywords_phone_number_missmatch: "Please Enter Valid phone number",
+    rest_keywords_account_not_verified: "Your account is not verified. Please verify your OTP before logging in.",
+    rest_keywords_account_admin_not_verified: "Your account is not verified. Please contact to admin.",
+    rest_keywords_user_deleted: "Your account has been deleted. Please contact to admin.",
+    rest_keywords_login_success: 'Login successfully.',
+    rest_keywords_email_send_failed: 'Failed to send email. Please try again later.',
+    rest_keywords_email_send_success: 'Email sent successfully. Please check your inbox.',
+    rest_keywords_sending_otp_success: 'OTP code sent successfully',
+    rest_keywords_otp_verified: 'OTP verified successfully.',
+    rest_keywords_otp_invalid: 'Please enter valid OTP.',
+    rest_keywords_otp_not_verified: 'OTP not verified',
+    rest_keywords_password_reset_success: 'Password reset successfully',
+    rest_keywords_old_new_passsword_match: 'Old password and new password must be different',
+    rest_keywords_password_change_success: 'Password changed successfully.',
+    rest_keywords_password_not_changed: 'Password not changed, please try again.',
+    rest_keywords_old_password_not_match: 'Old password does not match, please try again.',
+    rest_keywords_otp_sent_successfully: 'OTP sent successfully',
+    rest_keywords_account_deleted_success: 'Account deleted successfully.',
+    rest_keywords_logout_success: 'Logged out successfully.',
+
+
+
+}
+
+module.exports = en;
